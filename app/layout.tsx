@@ -6,8 +6,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 const metadata: Metadata = {
-  title: '우테코 따라잡기',
-  description: '우테코 따라잡기',
+  title: 'Toodoo',
+  description: '우테코 따라잡기 첫번째 구현과제',
 };
 
 const RootLayout = ({ children }: PropsWithChildren) => {

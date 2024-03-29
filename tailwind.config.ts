@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 import type { Config } from 'tailwindcss';
 
 const config = {
@@ -25,6 +27,13 @@ const config = {
       height: {
         // @ts-ignore this can be an array of strings
         screen: ['100vh', '100dvh'],
+      },
+      fontFamily: {
+        sans: [
+          'Wanted\\ Sans\\ Variable',
+          'Wanted\\ Sans',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         border: 'hsl(var(--border))',

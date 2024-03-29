@@ -1,3 +1,4 @@
+import CreateTodoAction from '@/features/root/create-todo-action';
 import TodoFetcher from '@/features/root/todo-fetcher';
 
 const RootPage = () => {
@@ -9,6 +10,7 @@ const RootPage = () => {
           <TodoFetcher />
         </div>
       </div>
+      <CreateTodoAction />
     </main>
   );
 };

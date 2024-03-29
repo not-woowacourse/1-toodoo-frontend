@@ -1,13 +1,8 @@
-'use client';
-
-import { MouseEventHandler } from 'react';
-
 import CreateTodoFab from '@/features/root/create-todo-fab';
+import CreateTodoSheet from '@/features/root/create-todo-sheet';
 
 const CreateTodoAction = () => {
-  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {};
-
-  return <CreateTodoFab onClick={handleClick} />;
+  return <CreateTodoSheet trigger={<CreateTodoFab />} />;
 };
 
 export default CreateTodoAction;

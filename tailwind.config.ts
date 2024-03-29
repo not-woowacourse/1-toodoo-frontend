@@ -75,6 +75,7 @@ const config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
+  tailwindFunctions: 'clsx',
 } satisfies Config;
 
 export default config;

@@ -25,7 +25,7 @@ const TodoResult = ({ result }: TodoResultProps) => {
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <p className="text-sm text-neutral-500">
           총 {length}개의 할 일이 있습니다.
         </p>

@@ -6,7 +6,16 @@ type TodoResultProps = {
 };
 
 const TodoResult = ({ result }: TodoResultProps) => {
-  return <TodoList todos={result} />;
+  const { length } = result;
+
+  return (
+    <div className="flex flex-col gap-1">
+      <p className="text-sm text-neutral-500">
+        총 {length}개의 할 일이 있습니다.
+      </p>
+      <TodoList todos={result} />
+    </div>
+  );
 };
 
 export default TodoResult;

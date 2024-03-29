@@ -1,25 +1,14 @@
-import { cn } from '@/lib/utils';
+import TodoFetcher from '@/features/root/todo-fetcher';
 
 const RootPage = () => {
   return (
-    <main
-      className={cn(
-        'w-screen h-screen',
-        'flex flex-col justify-center items-center',
-        'bg-neutral-50',
-      )}
-    >
-      <button
-        className={cn(
-          'flex flex-col justify-center items-center gap-10',
-          'hover:scale-110',
-          'active:scale-100',
-          'transition-transform',
-        )}
-      >
-        <p className="text-8xl">👋</p>
-        <p className="font-bold text-4xl">Hello World</p>
-      </button>
+    <main className="max-w-screen-sm mx-auto">
+      <div className="p-2">
+        <div className="flex flex-col gap-4">
+          <h1 className="font-bold text-2xl">Reminders</h1>
+          <TodoFetcher />
+        </div>
+      </div>
     </main>
   );
 };

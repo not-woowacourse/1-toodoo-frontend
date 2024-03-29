@@ -21,6 +21,10 @@ const TodoResult = ({ result }: TodoResultProps) => {
     result = result.filter((todo) => !todo.isDone);
   }
 
+  result.sort(
+    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
+  );
+
   const { length } = result;
 
   return (

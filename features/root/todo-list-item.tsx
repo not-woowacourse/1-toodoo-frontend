@@ -1,7 +1,6 @@
 import TodoListItemDeleteAction from '@/features/root/todo-list-item-delete-action';
 import TodoListItemDescription from '@/features/root/todo-list-item-description';
 import TodoListItemDoneAction from '@/features/root/todo-list-item-done-action';
-import TodoListItemPriority from '@/features/root/todo-list-item-priority';
 import TodoListItemTitle from '@/features/root/todo-list-item-title';
 import TodoListItemUpdateAction from '@/features/root/todo-list-item-update-action';
 import { cn } from '@/lib/utils';
@@ -12,7 +11,7 @@ type TodoListItemProps = {
 };
 
 const TodoListItem = ({ todo }: TodoListItemProps) => {
-  const { id, title, description, priority, isDone } = todo;
+  const { id, title, description, isDone } = todo;
 
   return (
     <li
@@ -24,10 +23,7 @@ const TodoListItem = ({ todo }: TodoListItemProps) => {
       <div className="flex gap-4">
         <TodoListItemDoneAction todoId={id} isDone={isDone} />
         <div className="flex flex-col flex-1">
-          <div className="flex items-center gap-2">
-            {priority !== null && <TodoListItemPriority priority={priority} />}
-            <TodoListItemTitle title={title} />
-          </div>
+          <TodoListItemTitle title={title} />
           {description !== null && (
             <TodoListItemDescription description={description} />
           )}

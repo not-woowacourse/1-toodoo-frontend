@@ -30,7 +30,7 @@ const TodoListItemDoneAction = ({
     mutationFn: axiosPatchTodoIsDoneOf,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: QUERY_KEYS.TODO_BY_ID(todoId),
+        queryKey: QUERY_KEYS.TODOS,
       });
       toast.success('할 일 완료 상태를 변경했어요.');
     },

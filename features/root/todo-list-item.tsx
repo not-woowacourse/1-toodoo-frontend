@@ -22,7 +22,7 @@ const TodoListItem = ({ todo }: TodoListItemProps) => {
       )}
     >
       <div className="flex gap-4">
-        <TodoListItemDoneAction todoId={id} />
+        <TodoListItemDoneAction todoId={id} isDone={isDone} />
         <div className="flex flex-col flex-1">
           <div className="flex items-center gap-2">
             {priority !== null && <TodoListItemPriority priority={priority} />}

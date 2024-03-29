@@ -18,6 +18,14 @@ const config = {
       },
     },
     extend: {
+      width: {
+        // @ts-ignore this can be an array of strings
+        screen: ['100vw', '100dvw'],
+      },
+      height: {
+        // @ts-ignore this can be an array of strings
+        screen: ['100vh', '100dvh'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

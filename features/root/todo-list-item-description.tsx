@@ -5,7 +5,7 @@ type TodoListItemDescriptionProps = {
 const TodoListItemDescription = ({
   description,
 }: TodoListItemDescriptionProps) => {
-  return <p>{description}</p>;
+  return <p className="text-xs text-neutral-500">{description}</p>;
 };
 
 export default TodoListItemDescription;

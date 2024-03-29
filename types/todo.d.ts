@@ -1,4 +1,4 @@
-import { Priority } from '@/types/enums/priority.enum';
+import { Priority } from '@/types/unions/priority';
 
 type Todo = {
   id: number;

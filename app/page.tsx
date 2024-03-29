@@ -1,5 +1,7 @@
 import { cn } from '@/lib/utils';
-
+// Header
+// TodoList
+// context : doneVisible, todos
 const RootPage = () => {
   return (
     <main

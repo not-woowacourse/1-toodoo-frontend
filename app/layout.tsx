@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 
 import './globals.css';
+import { QueryProvider } from '@/components/QueryProvider';
 
 const metadata: Metadata = {
   title: 'Toodoo',
@@ -11,7 +12,9 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko-KR">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 };

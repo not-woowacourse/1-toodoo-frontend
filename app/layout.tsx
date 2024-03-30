@@ -12,7 +12,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko-KR">
-      <body>
+      <body className="bg-neutral-50">
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>

@@ -24,7 +24,7 @@ const config = {
         // @ts-ignore this can be an array of strings
         screen: ['100vw', '100dvw'],
       },
-      height: {
+      minHeight: {
         // @ts-ignore this can be an array of strings
         screen: ['100vh', '100dvh'],
       },

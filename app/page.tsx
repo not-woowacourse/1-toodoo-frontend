@@ -18,12 +18,10 @@ const RootPage = () => {
         My To-Do List
       </h1>
       {!data || isLoading ? <p>Loading...</p> : null}
-      {data && (
+      {sorted && (
         <ul className="flex w-full max-w-xl flex-col gap-3">
-          {data.map((item) => (
-            <li key={item.id}>
-              <TodoCard todo={item} />
-            </li>
+          {sorted.map((item) => (
+            <TodoCard todo={item} key={item.id} />
           ))}
         </ul>
       )}

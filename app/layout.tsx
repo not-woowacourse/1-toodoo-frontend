@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+
 import './globals.css';
+import QueryProvider from '@/providers/query-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,7 +15,9 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko-KR">
-      <body className={inter.className}>{children}</body>
+      <QueryProvider>
+        <body className={inter.className}>{children}</body>
+      </QueryProvider>
     </html>
   );
 };

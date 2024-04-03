@@ -57,6 +57,7 @@ export function DeleteTodoSheet({
         </div>
         {error && <Error intent="삭제" error={error} />}
         <Button
+          autoFocus
           icon={CheckCircle}
           isLoading={isPending}
           text="삭제"

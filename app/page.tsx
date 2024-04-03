@@ -26,7 +26,7 @@ export default function RootPage() {
   const [isAddTodoSheetOpen, setIsAddTodoSheetOpen] = useState(false);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-xl flex-col items-center p-4 pb-[calc(env(safe-area-inset-bottom)+6rem)] transition-[padding] sm:p-8">
+    <main className="mx-auto flex min-h-screen max-w-xl flex-col items-center p-4 pb-[calc(env(safe-area-inset-bottom)+6rem)] transition-[padding] sm:p-8 sm:pb-[calc(env(safe-area-inset-bottom)+6rem)]">
       <Button
         icon={PlusCircle}
         text="새 할 일"

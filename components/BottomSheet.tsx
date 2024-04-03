@@ -28,8 +28,10 @@ export function BottomSheet({
   useEffect(() => {
     if (isOpen) {
       dialogRef.current?.showModal();
+      document.body.style.overflowY = 'hidden';
     } else {
       dialogRef.current?.close();
+      document.body.style.overflowY = 'auto';
     }
   }, [isOpen]);
 

@@ -7,8 +7,7 @@ const nextConfig = {
     //     'https://port-0-my-tiny-backend-am952lltl4h1s4.sel5.cloudtype.app') ||
     //   '';
 
-    const BACKEND_ORIGIN =
-      'https://port-0-my-tiny-backend-am952lltl4h1s4.sel5.cloudtype.app';
+    const BACKEND_ORIGIN = 'https://not-woowacourse-api.yopark.dev';
 
     return [
       {

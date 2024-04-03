@@ -17,7 +17,7 @@ export default function RootPage() {
     queryKey: ['todos'],
     select: (data) =>
       data
-        .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+        .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
         .filter((todo) => (showDone ? true : !todo.isDone)),
   });
 

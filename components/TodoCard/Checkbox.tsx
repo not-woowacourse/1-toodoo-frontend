@@ -32,7 +32,7 @@ export function Checkbox({
       />
       {isToggling ? (
         <Loader2
-          className="absolute left-1 top-1 animate-spin opacity-50 peer-checked:text-white"
+          className="pointer-events-none absolute left-1 top-1 animate-spin opacity-50 peer-checked:text-white"
           size={16}
           strokeWidth={3}
         />

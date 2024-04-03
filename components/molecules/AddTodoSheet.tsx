@@ -24,7 +24,7 @@ import { apiPostTodo } from '@/lib/apis';
 const SUCCES_ADD_MESSAGE = '할 일을 추가했어요.';
 const FAIL_ADD_MESSAGE = '할 일 추가에 실패했어요. 잠시 후에 시도해주세요.';
 
-export const AddTodoSheet = () => {
+const AddTodoSheet = () => {
   const [title, setTitle] = useState<string>('');
   const isTitleEmpty = title === '';
   const queryClient = useQueryClient();
@@ -86,3 +86,5 @@ export const AddTodoSheet = () => {
     </Sheet>
   );
 };
+
+export default AddTodoSheet;

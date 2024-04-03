@@ -19,7 +19,7 @@ export const apiGetTodos = () => {
   return axiosInstance.get<ResGetTodosDto>(BACKEND_ROUTES.Todos);
 };
 
-export const apiGetTodoOf = (id: number) => {
+export const apiGetTodo = (id: number) => {
   return axiosInstance.get<ResGetTodoDto>(BACKEND_ROUTES.TodoOf(id));
 };
 
@@ -30,6 +30,6 @@ export const apiPatchTodo = (id: number, patchTodoDto: PatchTodoDto) => {
   );
 };
 
-export const apiDeleteTodoOf = (id: number) => {
+export const apiDeleteTodo = (id: number) => {
   return axiosInstance.delete<ResDeleteTodoDto>(BACKEND_ROUTES.TodoOf(id));
 };

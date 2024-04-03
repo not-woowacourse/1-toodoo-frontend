@@ -9,11 +9,13 @@ import type { TodoGetResponse } from '@/lib/types';
 import { Button } from '@/components/Button';
 import { AddTodoSheet } from '@/components/AddTodoSheet';
 import { Toggle } from '@/components/Toggle';
+import { Error } from '@/components/TodoCard/Error';
+import { Skeleton } from '@/components/TodoCard/Skeleton';
 
 export default function RootPage() {
   const [showDone, setShowDone] = useState(false);
 
-  const { data, isLoading } = useQuery<TodoGetResponse>({
+  const { data, isLoading, error } = useQuery<TodoGetResponse>({
     queryKey: ['todos'],
     select: (data) =>
       data
@@ -43,11 +45,17 @@ export default function RootPage() {
         isOpen={isAddTodoSheetOpen}
         setIsOpen={setIsAddTodoSheetOpen}
       />
-      {isLoading ? <p>Loading...</p> : null}
-      {!data && !isLoading ? <p>에러</p> : null}
+      {isLoading && (
+        <div className="flex w-full flex-col gap-3">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Skeleton key={index} />
+          ))}
+        </div>
+      )}
+      {error && <Error intent="로딩" error={error} className="w-full" />}
       {data && data.length === 0 ? <p>텅</p> : null}
       {data && data.length > 0 && (
-        <ul className="flex w-full max-w-xl flex-col gap-3">
+        <ul className="flex w-full flex-col gap-3">
           {data.map((item) => (
             <TodoCard todo={item} key={item.id} />
           ))}

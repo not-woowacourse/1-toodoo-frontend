@@ -18,11 +18,12 @@ export const TodoItem = ({ todo, hideCompleted }: TodoItemProps) => {
   const isHidden = hideCompleted && isDone;
 
   return (
-    <li className="items-top flex space-x-2" hidden={isHidden}>
+    <li
+      className="flex items-center space-x-2 w-full bg-white rounded-md p-3 h-14"
+      hidden={isHidden}
+    >
       <CompleteTodoCheckbox todoId={id} isDone={isDone} />
-      <div className="grid gap-1.5 leading-none">
-        <TodoInfo title={title} description={description} />
-      </div>
+      <TodoInfo title={title} description={description} />
     </li>
   );
 };

@@ -6,7 +6,7 @@ type TodoInfoProps = {
 const TodoInfo = ({ title, description }: TodoInfoProps) => {
   return (
     <>
-      <p className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+      <p className="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
         {title}
       </p>
       {description && (

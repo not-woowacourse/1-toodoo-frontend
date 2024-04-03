@@ -25,7 +25,7 @@ const TodoListBody = () => {
   }
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-2 w-full h-full overflow-y-scroll">
       {todos?.map((todo) => (
         <TodoItem key={todo.id} todo={todo} hideCompleted={false} />
       ))}

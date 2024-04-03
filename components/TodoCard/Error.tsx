@@ -17,7 +17,7 @@ export function Error({ intent, error, className }: ErrorProps) {
         className,
       )}
     >
-      <AlertCircle />
+      <AlertCircle className="flex-none" />
       <span>
         {intent} 실패 ({error.message})
       </span>

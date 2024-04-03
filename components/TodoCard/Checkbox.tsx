@@ -28,13 +28,13 @@ export function Checkbox({
       />
       {isLoading ? (
         <Loader2
-          className="pointer-events-none absolute left-1 top-1 animate-spin opacity-50 peer-checked:text-white"
+          className="pointer-events-none absolute left-1 top-1 flex-none animate-spin opacity-50 peer-checked:text-white"
           size={16}
           strokeWidth={3}
         />
       ) : (
         <Check
-          className="pointer-events-none absolute left-1 top-1 opacity-0 transition-transform peer-checked:text-white peer-checked:opacity-100 peer-active:scale-90"
+          className="pointer-events-none absolute left-1 top-1 flex-none opacity-0 transition-transform peer-checked:text-white peer-checked:opacity-100 peer-active:scale-90"
           size={16}
           strokeWidth={4}
         />

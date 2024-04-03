@@ -1,17 +1,11 @@
-import {
-  useState,
-  type Dispatch,
-  type SetStateAction,
-  type FormEvent,
-} from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 
 import { BottomSheet } from '@/components/BottomSheet';
-import { TextInput } from '@/components/TextInput';
 import { Button } from '@/components/Button';
-import type { Todo, TodoPatchResponse } from '@/lib/types';
+import type { Todo } from '@/lib/types';
 import { Error } from '@/components/TodoCard/Error';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
 import { TodoCard } from '@/components/TodoCard';

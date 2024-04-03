@@ -8,7 +8,7 @@ import {
 import axios from 'axios';
 import { type PropsWithChildren } from 'react';
 
-import { API_URL, CLIENT_NAME, DEFAULT_HEADERS } from '@/lib/constants';
+import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
 
 export function QueryProvider({ children }: PropsWithChildren) {
   let browserQueryClient: QueryClient | undefined = undefined;

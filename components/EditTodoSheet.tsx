@@ -20,17 +20,16 @@ interface EditTodoSheetProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function EditTodoSheet({
-  todo: { id, title, description },
-  isOpen,
-  setIsOpen,
-}: EditTodoSheetProps) {
+export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
+  const [title, setNewTitle] = useState(todo.title);
+  const [description, setNewDescription] = useState(todo.description ?? '');
+
   const queryClient = useQueryClient();
 
-  const { mutate, isPending, status } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({ title, description }: Pick<Todo, 'title' | 'description'>) =>
       axios.patch<TodoPatchResponse>(
-        `${API_URL}/todos/${id}`,
+        `${API_URL}/todos/${todo.id}`,
         { title, description },
         { headers: DEFAULT_HEADERS },
       ),
@@ -44,11 +43,8 @@ export function EditTodoSheet({
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    mutate({ title: newTitle, description: newDescription });
+    mutate({ title, description });
   };
-
-  const [newTitle, setNewTitle] = useState(title);
-  const [newDescription, setNewDescription] = useState(description ?? '');
 
   return (
     <BottomSheet title="할 일 수정" isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -57,13 +53,13 @@ export function EditTodoSheet({
           label="제목"
           placeholder="과제 제출"
           autoFocus
-          text={newTitle}
+          text={title}
           setText={setNewTitle}
         />
         <TextInput
           label="설명"
           placeholder="12월 31일까지 제출"
-          text={newDescription}
+          text={description}
           setText={setNewDescription}
         />
         <Button

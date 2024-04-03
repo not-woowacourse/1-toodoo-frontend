@@ -56,6 +56,9 @@ export default function RootPage() {
       />
       {isLoading && (
         <div className="flex w-full flex-col gap-3">
+          <div className="sr-only" role="status">
+            로딩 중입니다.
+          </div>
           {Array.from({ length: 4 }).map((_, index) => (
             <Skeleton key={index} />
           ))}

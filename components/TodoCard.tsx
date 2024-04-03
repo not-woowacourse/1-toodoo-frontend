@@ -20,7 +20,7 @@ export function TodoCard({
     return await queryClient.invalidateQueries({ queryKey: ['todos'] });
   };
 
-  const todoAPIUrl = `${API_URL}/todos/${id}`;
+  const itemUrl = `${API_URL}/todos/${id}`;
 
   const {
     mutate: toggle,
@@ -29,7 +29,7 @@ export function TodoCard({
   } = useMutation({
     mutationFn: () =>
       axios.patch<TodoPatchResponse>(
-        todoAPIUrl,
+        itemUrl,
         { isDone: !isDone },
         { headers: DEFAULT_HEADERS },
       ),
@@ -41,7 +41,7 @@ export function TodoCard({
     isPending: isErasing,
     error: eraseError,
   } = useMutation({
-    mutationFn: () => axios.delete(todoAPIUrl, { headers: DEFAULT_HEADERS }),
+    mutationFn: () => axios.delete(itemUrl, { headers: DEFAULT_HEADERS }),
     onSettled: invalidateQueries,
   });
 
@@ -54,7 +54,7 @@ export function TodoCard({
           <input
             id={htmlId}
             type="checkbox"
-            className="peer size-full cursor-pointer appearance-none rounded border border-neutral-200 bg-white shadow-sm transition-all checked:border-neutral-900 checked:bg-neutral-800 enabled:hover:border-neutral-300 enabled:hover:bg-neutral-100 checked:enabled:hover:border-neutral-800 checked:enabled:hover:bg-neutral-700 enabled:active:scale-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="peer size-full cursor-pointer appearance-none rounded border border-neutral-200 bg-white shadow-sm outline-none ring-rose-500 ring-offset-2 transition-all checked:border-neutral-900 checked:bg-neutral-800 focus-visible:ring-2 enabled:hover:border-neutral-300 enabled:hover:bg-neutral-100 checked:enabled:hover:border-neutral-800 checked:enabled:hover:bg-neutral-700 enabled:focus-visible:border-neutral-300 enabled:focus-visible:bg-neutral-100 checked:enabled:focus-visible:border-neutral-800 checked:enabled:focus-visible:bg-neutral-700 enabled:active:scale-90 disabled:cursor-not-allowed disabled:opacity-50"
             checked={isDone}
             disabled={isLoading}
             onChange={() => toggle()}
@@ -87,14 +87,14 @@ export function TodoCard({
           <div className="ml-auto flex flex-none gap-0.5 p-2.5 pl-0">
             <button
               disabled={isLoading}
-              className="sticky top-2.5 flex size-8 items-center justify-center rounded text-neutral-600 transition-all enabled:hover:bg-neutral-200 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              className="sticky top-2.5 flex size-8 items-center justify-center rounded text-neutral-600 outline-none ring-rose-500 ring-offset-2 transition-all focus-visible:ring-2 enabled:hover:bg-neutral-200 enabled:focus-visible:bg-neutral-200 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <PencilLine size={20} />
             </button>
             <button
               disabled={isLoading}
               onClick={() => erase()}
-              className="sticky top-2.5 flex size-8 items-center justify-center rounded text-neutral-600 transition-all enabled:hover:bg-neutral-200 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              className="sticky top-2.5 flex size-8 items-center justify-center rounded text-neutral-600 outline-none ring-rose-500 ring-offset-2 transition-all focus-visible:ring-2 enabled:hover:bg-neutral-200 enabled:focus-visible:bg-neutral-200 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isErasing ? (
                 <Loader2 size={20} className="animate-spin" />

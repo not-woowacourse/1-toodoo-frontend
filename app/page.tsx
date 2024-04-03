@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Bird, PlusCircle } from 'lucide-react';
+import { Bird, Github, PlusCircle } from 'lucide-react';
 
 import { TodoCard } from '@/components/TodoCard';
 import type { TodoGetResponse } from '@/lib/types';
@@ -34,7 +34,16 @@ export default function RootPage() {
         className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)]"
       />
       <header className="flex w-full flex-wrap items-center justify-between gap-4 px-3 pb-4 transition-[padding] sm:px-6 sm:pb-8">
-        <h1 className="text-3xl font-bold text-neutral-900">할 일</h1>
+        <div className="flex items-center gap-2 text-neutral-800">
+          <h1 className="text-3xl font-bold">할 일</h1>
+          <a
+            target="_blank"
+            href="https://github.com/te6-in/not-woowacourse-1-toodoo-frontend"
+            className="flex size-9 items-center justify-center rounded-lg outline-none ring-rose-500 ring-offset-2 transition-all hover:bg-neutral-200 focus-visible:bg-neutral-200 focus-visible:ring-2 active:scale-95"
+          >
+            <Github size={22} />
+          </a>
+        </div>
         <Toggle
           label="완료된 항목 표시"
           isOn={showDone}

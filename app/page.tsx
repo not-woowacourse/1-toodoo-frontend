@@ -1,27 +1,19 @@
+import TodoList from '@/components/templates/TodoList';
 import { cn } from '@/lib/utils';
-// Header
-// TodoList
 // context : doneVisible, todos
 const RootPage = () => {
   return (
     <main
       className={cn(
-        'w-screen h-screen',
-        'flex flex-col justify-center items-center',
+        'max-w-xl h-screen',
+        'flex flex-col items-center',
         'bg-neutral-50',
+        'p-7',
+        'mx-auto',
       )}
     >
-      <button
-        className={cn(
-          'flex flex-col justify-center items-center gap-10',
-          'hover:scale-110',
-          'active:scale-100',
-          'transition-transform',
-        )}
-      >
-        <p className="text-8xl">👋</p>
-        <p className="font-bold text-4xl">Hello World</p>
-      </button>
+      <h1 className="font-bold text-3xl">Reminders</h1>
+      <TodoList />
     </main>
   );
 };

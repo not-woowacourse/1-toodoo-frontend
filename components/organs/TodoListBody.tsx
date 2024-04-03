@@ -2,7 +2,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { apiGetTodos } from '@/lib/apis';
-import { TodoItem } from '@/components/organs/TodoItem';
+import { TodoItem } from '@/components/molecules/TodoItem';
 
 const TodoListBody = () => {
   const { data, isLoading, isError } = useQuery({

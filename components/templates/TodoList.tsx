@@ -1,6 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
 import TodoListBody from '@/components/organs/TodoListBody';
+import TodoListHeader from '@/components/organs/TodoListHeader';
 
 const TodoList = () => {
   return (
@@ -12,6 +13,7 @@ const TodoList = () => {
         'rounded-xl',
       )}
     >
+      <TodoListHeader />
       <TodoListBody />
     </div>
   );

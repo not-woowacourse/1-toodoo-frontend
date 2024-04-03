@@ -47,7 +47,7 @@ const handlePatchTodoInfo = async (data: dataPatchTodoInfo) => {
   });
 };
 
-export const UpdateTodoSheet = ({ todo }: UpdateTodoSheetProps) => {
+const UpdateTodoSheet = ({ todo }: UpdateTodoSheetProps) => {
   const [title, setTitle] = useState<string>(todo.title);
   const [description, setDescription] = useState<string>(
     todo.description ?? '',
@@ -131,3 +131,5 @@ export const UpdateTodoSheet = ({ todo }: UpdateTodoSheetProps) => {
     </Sheet>
   );
 };
+
+export default UpdateTodoSheet;

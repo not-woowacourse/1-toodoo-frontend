@@ -3,13 +3,27 @@
 // Switch : 완료한 todo 숨기기 조정
 
 'use client';
+import { useState } from 'react';
 
-import { AddTodoSheet } from '@/components/molecules/AddTodoSheet';
+import AddTodoSheet from '@/components/molecules/AddTodoSheet';
+import CounterTodo from '@/components/atoms/CounterTodo';
+import ShowCompletedToggle from '@/components/atoms/ShowCompletedTodoToggle';
 
 const TodoListHeader = () => {
+  const [isShowDone, setIsShowDone] = useState<boolean>(false);
+
+  const handlePressedChange = (pressed: boolean) => {
+    setIsShowDone(pressed);
+  };
+
   return (
-    <div className="flex w-full">
+    <div className="flex w-full gap-3">
+      <CounterTodo />
       <AddTodoSheet />
+      <ShowCompletedToggle
+        defaultPressed={isShowDone}
+        onPressedChange={handlePressedChange}
+      />
     </div>
   );
 };

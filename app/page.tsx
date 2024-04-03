@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { PlusCircle } from 'lucide-react';
+import { Bird, PlusCircle } from 'lucide-react';
 
 import { TodoCard } from '@/components/TodoCard';
 import type { TodoGetResponse } from '@/lib/types';
@@ -53,7 +53,12 @@ export default function RootPage() {
         </div>
       )}
       {error && <Error intent="로딩" error={error} className="w-full" />}
-      {data && data.length === 0 ? <p>텅</p> : null}
+      {data && data.length === 0 ? (
+        <div className="my-8 flex flex-col items-center gap-4 text-sm font-medium text-neutral-500">
+          <Bird size={48} />
+          <div>모든 할 일을 완료했어요.</div>
+        </div>
+      ) : null}
       {data && data.length > 0 && (
         <ul className="flex w-full flex-col gap-3">
           {data.map((item) => (

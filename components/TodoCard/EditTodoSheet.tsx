@@ -13,6 +13,7 @@ import { TextInput } from '@/components/TextInput';
 import { Button } from '@/components/Button';
 import type { Todo, TodoPatchResponse } from '@/lib/types';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
+import { Error } from '@/components/TodoCard/Error';
 
 interface EditTodoSheetProps {
   todo: Todo;
@@ -26,14 +27,18 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
 
   const queryClient = useQueryClient();
 
-  const { mutate, isPending } = useMutation({
+  const {
+    mutate: edit,
+    isPending,
+    error,
+  } = useMutation({
     mutationFn: ({ title, description }: Pick<Todo, 'title' | 'description'>) =>
       axios.patch<TodoPatchResponse>(
         `${API_URL}/todos/${todo.id}`,
         { title, description },
         { headers: DEFAULT_HEADERS },
       ),
-    onSettled: async () => {
+    onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['todos'] });
 
       setIsOpen(false);
@@ -43,7 +48,7 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    mutate({ title, description });
+    edit({ title, description });
   };
 
   return (
@@ -62,6 +67,7 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
           text={description}
           setText={setNewDescription}
         />
+        {error && <Error intent="수정" error={error} />}
         <Button
           type="submit"
           icon={CheckCircle}

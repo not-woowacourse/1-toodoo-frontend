@@ -6,8 +6,6 @@ import TodoInfo from '@/components/atoms/TodoInfo';
 import DeleteTodoButton from '@/components/atoms/DeleteTodoButton';
 import UpdateTodoSheet from '@/components/molecules/UpdateTodoSheet';
 
-// checkBox 기능 ; check -> sonner toast 생성
-
 type TodoItemProps = {
   todo: Todo;
   hideCompleted: boolean;
@@ -19,7 +17,7 @@ export const TodoItem = ({ todo, hideCompleted }: TodoItemProps) => {
 
   return (
     <li
-      className="flex items-center space-x-2 w-full bg-white rounded-md p-3 h-14"
+      className="w-full h-14 p-3 flex items-center gap-3 bg-white rounded-md"
       hidden={isHidden}
     >
       <CompleteTodoCheckbox todoId={id} isDone={isDone} />

@@ -85,7 +85,7 @@ const UpdateTodoSheet = ({ todo }: UpdateTodoSheetProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary" size="sm" className="hover:shadow-md">
           <PencilLine className="h-5 w-5 text-neutral-500" />
         </Button>
       </SheetTrigger>

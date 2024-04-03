@@ -36,7 +36,12 @@ const DeleteTodoButton = ({ todoId }: DeleteTodoButtonProps) => {
   };
 
   return (
-    <Button variant="secondary" size="sm" onClick={handleClick}>
+    <Button
+      variant="secondary"
+      size="sm"
+      onClick={handleClick}
+      className="hover:shadow-md"
+    >
       <Trash className="h-5 w-5 text-neutral-500" />
     </Button>
   );

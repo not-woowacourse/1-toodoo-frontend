@@ -1,5 +1,4 @@
-export const API_URL =
-  'https://port-0-my-tiny-backend-am952lltl4h1s4.sel5.cloudtype.app';
+export const API_URL = 'https://not-woowacourse-api.yopark.dev';
 
 export const CLIENT_NAME = 'chanhwi';
 

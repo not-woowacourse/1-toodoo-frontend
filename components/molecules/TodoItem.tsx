@@ -4,6 +4,7 @@ import { Todo } from '@/types/types';
 import CompleteTodoCheckbox from '@/components/atoms/CompleteTodoCheckbox';
 import TodoInfo from '@/components/atoms/TodoInfo';
 
+import { UpdateTodoSheet } from './UpdateTodoSheet';
 // Todo box
 // 수정, 삭제 버튼
 // checkBox 기능 ; check -> sonner toast 생성
@@ -24,6 +25,7 @@ export const TodoItem = ({ todo, hideCompleted }: TodoItemProps) => {
     >
       <CompleteTodoCheckbox todoId={id} isDone={isDone} />
       <TodoInfo title={title} description={description} />
+      <UpdateTodoSheet todo={todo} />
     </li>
   );
 };

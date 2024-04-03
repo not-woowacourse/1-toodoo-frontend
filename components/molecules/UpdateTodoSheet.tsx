@@ -22,6 +22,10 @@ import { QUERY_KEYS } from '@/constants/constants';
 import { apiPatchTodo } from '@/lib/apis';
 import { Todo } from '@/types/types';
 
+type UpdateTodoSheetProps = {
+  todo: Todo;
+};
+
 type dataPatchTodoInfo = {
   todoId: number;
   title: string;
@@ -43,7 +47,7 @@ const handlePatchTodoInfo = async (data: dataPatchTodoInfo) => {
   });
 };
 
-export const UpdateTodoSheet = (todo: Todo) => {
+export const UpdateTodoSheet = ({ todo }: UpdateTodoSheetProps) => {
   const [title, setTitle] = useState<string>(todo.title);
   const [description, setDescription] = useState<string>(
     todo.description ?? '',

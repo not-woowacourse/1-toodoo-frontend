@@ -1,3 +1,5 @@
+'use client';
+
 import { type Dispatch, type SetStateAction } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';

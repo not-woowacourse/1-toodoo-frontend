@@ -1,3 +1,5 @@
+'use client';
+
 import { PencilLine, Trash2 } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';

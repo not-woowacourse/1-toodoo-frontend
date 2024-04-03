@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, type MouseEventHandler, use, useEffect } from 'react';
 import { Loader2, type LucideIcon } from 'lucide-react';
 

@@ -40,10 +40,9 @@ export function DeleteTodoSheet({
     <BottomSheet title="할 일 삭제" isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="flex flex-col gap-3">
         <div className="flex flex-col gap-2">
-          <div className="cursor-not-allowed opacity-80">
-            <div className="pointer-events-none">
-              <TodoCard todo={todo} />
-            </div>
+          <div className="flex flex-col gap-1 rounded-xl bg-neutral-200 px-4 py-3.5">
+            <div className="font-medium text-neutral-900">{todo.title}</div>
+            <p className="text-sm text-neutral-500">{todo.description}</p>
           </div>
           <div className="text-center text-sm font-semibold text-neutral-500">
             이 할 일을 정말 삭제하시겠습니까?

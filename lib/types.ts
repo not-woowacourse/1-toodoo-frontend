@@ -10,3 +10,5 @@ export interface Todo {
 export type TodoGetResponse = Todo[];
 
 export type TodoPatchResponse = Todo;
+
+export type TodoPostResponse = Todo;

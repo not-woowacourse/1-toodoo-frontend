@@ -12,6 +12,7 @@ import { BottomSheet } from '@/components/BottomSheet';
 import { TextInput } from '@/components/TextInput';
 import { Button } from '@/components/Button';
 import type { Todo, TodoPostResponse } from '@/lib/types';
+import { Error } from '@/components/TodoCard/Error';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
 
 interface AddTodoSheetProps {
@@ -24,14 +25,18 @@ export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
 
   const queryClient = useQueryClient();
 
-  const { mutate, isPending, status } = useMutation({
+  const {
+    mutate: add,
+    isPending,
+    error,
+  } = useMutation({
     mutationFn: ({ title }: Pick<Todo, 'title'>) =>
       axios.post<TodoPostResponse>(
         `${API_URL}/todos`,
         { title },
         { headers: DEFAULT_HEADERS },
       ),
-    onSettled: async () => {
+    onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['todos'] });
 
       setTitle('');
@@ -42,7 +47,7 @@ export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    mutate({ title });
+    add({ title });
   };
 
   return (
@@ -55,12 +60,13 @@ export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
           text={title}
           setText={setTitle}
         />
+        {error && <Error intent="추가" error={error} />}
         <Button
           type="submit"
           icon={CheckCircle}
           text="추가"
           className="w-full"
-          onClick={() => {}}
+          isLoading={isPending}
         />
       </form>
     </BottomSheet>

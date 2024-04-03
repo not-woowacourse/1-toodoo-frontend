@@ -1,15 +1,21 @@
 import { AlertCircle } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
+
 interface ErrorProps {
   intent: string;
   error: Error;
+  className?: string;
 }
 
-export function Error({ intent, error }: ErrorProps) {
+export function Error({ intent, error, className }: ErrorProps) {
   return (
     <div
       role="alert"
-      className="flex items-center gap-2 rounded-lg bg-red-100 p-2.5 text-sm font-semibold text-red-600"
+      className={cn(
+        'flex items-center gap-2 rounded-lg bg-red-100 p-2.5 text-sm font-semibold text-red-600',
+        className,
+      )}
     >
       <AlertCircle />
       <span>

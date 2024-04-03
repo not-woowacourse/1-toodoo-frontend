@@ -52,7 +52,7 @@ export const AddTodoSheet = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="fixed bottom-4 left-4">
+        <Button className="">
           <Plus className="mr-2 h-4 w-4" />
           New Reminder
         </Button>

@@ -8,7 +8,7 @@ import { AddTodoSheet } from '@/components/molecules/AddTodoSheet';
 
 const TodoListHeader = () => {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <AddTodoSheet />
     </div>
   );

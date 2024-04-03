@@ -4,13 +4,13 @@ const HTTP_HEADERS = {
 } as const;
 
 const QUERY_KEYS = {
-  TODOS: ['todos'],
-  TODO_BY_ID: (id: number) => ['todo', { id }],
+  Todos: ['todos'],
+  TodoById: (id: number) => ['todo', { id }],
 } as const;
 
 const BACKEND_ROUTES = {
-  TODOS: '/todos',
-  TODO_OF: (id: number) => `/todos/${id}`,
+  Todos: '/todos',
+  TodoOf: (id: number) => `/todos/${id}`,
 } as const;
 
 const FRONTEND_ORIGIN =

@@ -51,7 +51,7 @@ export function EditTodoSheet({
   const [newDescription, setNewDescription] = useState(description ?? '');
 
   return (
-    <BottomSheet title={`${title} 수정`} isOpen={isOpen} setIsOpen={setIsOpen}>
+    <BottomSheet title="할 일 수정" isOpen={isOpen} setIsOpen={setIsOpen}>
       <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
         <TextInput
           label="제목"

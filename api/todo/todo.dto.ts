@@ -10,3 +10,5 @@ export type TodoDto = {
     name: string;
   };
 };
+
+export type TodoListDto = TodoDto[];

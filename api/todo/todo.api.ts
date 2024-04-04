@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { TodoDto } from './todo.dto';
+import { TodoDto, TodoListDto } from './todo.dto';
 
 class TodoAPI {
   private core: AxiosInstance;
@@ -8,7 +8,7 @@ class TodoAPI {
     this.core = core;
   }
   async getTodoList() {
-    const { data } = await this.core.get<TodoDto>(`/todos`);
+    const { data } = await this.core.get<TodoListDto>(`/todos`);
     return data;
   }
 

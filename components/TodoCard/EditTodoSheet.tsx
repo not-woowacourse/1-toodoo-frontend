@@ -28,6 +28,9 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
   const [title, setTitle] = useState(todo.title);
   const [description, setDescription] = useState(todo.description ?? '');
 
+  const trimmedTitle = title.trim();
+  const trimmedDescription = description.trim();
+
   const queryClient = useQueryClient();
 
   const {
@@ -51,7 +54,7 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    edit({ title, description });
+    edit({ title: trimmedTitle, description: trimmedDescription });
   };
 
   return (
@@ -78,6 +81,7 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
           isLoading={isPending}
           text="수정"
           className="w-full"
+          disabled={trimmedTitle === ''}
         />
       </form>
     </BottomSheet>

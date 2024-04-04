@@ -25,6 +25,8 @@ interface AddTodoSheetProps {
 export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
   const [title, setTitle] = useState('');
 
+  const trimmedTitle = title.trim();
+
   const queryClient = useQueryClient();
 
   const {
@@ -49,7 +51,7 @@ export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    add({ title });
+    add({ title: trimmedTitle });
   };
 
   return (
@@ -69,6 +71,7 @@ export function AddTodoSheet({ isOpen, setIsOpen }: AddTodoSheetProps) {
           text="추가"
           className="w-full"
           isLoading={isPending}
+          disabled={trimmedTitle === ''}
         />
       </form>
     </BottomSheet>

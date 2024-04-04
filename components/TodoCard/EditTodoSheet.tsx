@@ -24,8 +24,8 @@ interface EditTodoSheetProps {
 }
 
 export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
-  const [title, setNewTitle] = useState(todo.title);
-  const [description, setNewDescription] = useState(todo.description ?? '');
+  const [title, setTitle] = useState(todo.title);
+  const [description, setDescription] = useState(todo.description ?? '');
 
   const queryClient = useQueryClient();
 
@@ -61,13 +61,13 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
           placeholder="과제 제출"
           autoFocus
           text={title}
-          setText={setNewTitle}
+          setText={setTitle}
         />
         <TextInput
           label="설명"
           placeholder="12월 31일까지 제출"
           text={description}
-          setText={setNewDescription}
+          setText={setDescription}
         />
         {error && <Error intent="수정" error={error} />}
         <Button

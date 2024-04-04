@@ -64,7 +64,7 @@ export function TodoCard({ todo }: TodoCardProps) {
             className="flex flex-grow flex-col p-3.5 pl-0"
             htmlFor={htmlId}
           >
-            <h2 className="font-medium text-neutral-900 line-through decoration-transparent transition-colors group-has-[:checked]:text-neutral-500 group-has-[:checked]:decoration-neutral-900">
+            <h2 className="font-medium text-neutral-900 transition-colors group-has-[:checked]:text-neutral-500 group-has-[:checked]:line-through group-has-[:checked]:decoration-neutral-900">
               {todo.title}
             </h2>
             <p className="text-sm text-neutral-500 transition-colors empty:hidden group-has-[:checked]:text-neutral-400">

@@ -58,6 +58,8 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
       trimmedTitle === todo.title &&
       trimmedDescription === todo.description
     ) {
+      setTitle(todo.title);
+      setDescription(todo.description ?? '');
       setIsOpen(false);
 
       return;

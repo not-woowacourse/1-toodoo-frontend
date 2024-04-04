@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { PropsWithChildren } from 'react';
+// import { PropsWithChildren } from 'react';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -10,7 +10,7 @@ const metadata: Metadata = {
   description: '우테코 따라잡기 첫번째 구현과제',
 };
 
-const RootLayout = ({ children }: PropsWithChildren) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko-KR">
       <body className={inter.className}>{children}</body>

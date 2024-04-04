@@ -31,7 +31,7 @@ export default function RootPage() {
         icon={PlusCircle}
         text="새 할 일"
         onClick={() => setIsAddTodoSheetOpen(true)}
-        className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)]"
+        className="fixed bottom-[calc(env(safe-area-inset-bottom)+1.5rem)] z-10"
       />
       <header className="flex w-full flex-wrap items-center justify-between gap-4 px-3 pb-4 transition-[padding] sm:px-6 sm:pb-8">
         <div className="flex items-center gap-2 text-neutral-800">

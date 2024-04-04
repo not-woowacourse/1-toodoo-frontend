@@ -16,6 +16,7 @@ import { Button } from '@/components/Button';
 import type { Todo, TodoPatchResponse } from '@/lib/types';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
 import { Error } from '@/components/TodoCard/Error';
+import { TextArea } from '@/components/TextArea';
 
 interface EditTodoSheetProps {
   todo: Todo;
@@ -63,7 +64,8 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
           text={title}
           setText={setTitle}
         />
-        <TextInput
+        <TextArea
+          rows={5}
           label="설명"
           placeholder="12월 31일까지 제출"
           text={description}

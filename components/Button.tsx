@@ -29,8 +29,8 @@ export function Button({
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (autoFocus) {
-      ref.current?.focus();
+    if (autoFocus && ref.current) {
+      ref.current.autofocus = true;
     }
   }, [autoFocus]);
 

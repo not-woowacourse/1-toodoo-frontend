@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type MouseEventHandler, use, useEffect } from 'react';
+import { useRef, type MouseEventHandler, useEffect } from 'react';
 import { Loader2, type LucideIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
@@ -41,7 +41,7 @@ export function Button({
       disabled={disabled || isLoading}
       ref={ref}
       className={cn(
-        'flex justify-center gap-2 rounded-xl bg-neutral-900 p-3 text-white shadow-lg outline-none ring-rose-500 ring-offset-2 transition-all enabled:hover:bg-neutral-800 enabled:focus-visible:bg-neutral-800 enabled:focus-visible:ring-2 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50',
+        'flex justify-center gap-2 rounded-xl bg-neutral-900 p-3 text-white shadow outline-none ring-rose-500 ring-offset-2 transition-all enabled:hover:bg-neutral-800 enabled:focus-visible:bg-neutral-800 enabled:focus-visible:ring-2 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-50',
         className,
       )}
     >

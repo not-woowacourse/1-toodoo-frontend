@@ -10,7 +10,6 @@ import { Button } from '@/components/Button';
 import type { Todo } from '@/lib/types';
 import { Error } from '@/components/TodoCard/Error';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
-import { TodoCard } from '@/components/TodoCard';
 
 interface DeleteTodoSheetProps {
   todo: Todo;

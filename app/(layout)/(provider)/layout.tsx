@@ -3,6 +3,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 
+import ApiProvider from '@/contexts/api.context/api.context';
+
 export default function ProvidersLayout({
   children,
 }: {
@@ -15,6 +17,8 @@ export default function ProvidersLayout({
       }),
   );
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <ApiProvider>{children}</ApiProvider>
+    </QueryClientProvider>
   );
 }

@@ -1,11 +1,18 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { createTodo } from '@/api/todo/createTodo';
+import { useAPI } from '@/contexts/api.context/api.context';
 
 export default function useMutationCreateTodo() {
+  const api = useAPI();
   const queryClient = useQueryClient();
   const queryKey = ['todoList'];
-  const mutationFn = ({ title }: { title: string }) => createTodo({ title });
+  const mutationFn = ({
+    title,
+    description,
+  }: {
+    title: string;
+    description: string;
+  }) => api.todo.createTodo({ title, description });
   return useMutation({
     mutationFn,
     onSuccess: () => {

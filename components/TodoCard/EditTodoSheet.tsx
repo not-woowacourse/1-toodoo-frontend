@@ -54,6 +54,14 @@ export function EditTodoSheet({ todo, isOpen, setIsOpen }: EditTodoSheetProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    if (
+      trimmedTitle === todo.title &&
+      trimmedDescription === todo.description
+    ) {
+      setIsOpen(false);
+
+      return;
+    }
     edit({ title: trimmedTitle, description: trimmedDescription });
   };
 

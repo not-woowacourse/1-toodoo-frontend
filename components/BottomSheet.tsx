@@ -49,7 +49,7 @@ export function BottomSheet({
       ref={dialogRef}
       onKeyDown={handleKeyDown}
     >
-      <div className="text-neutral-901 flex w-full items-center justify-between gap-2 px-1">
+      <div className="flex w-full items-center justify-between gap-2 px-1 text-neutral-900">
         <div className="text-lg font-bold">{title}</div>
         <button
           onClick={() => setIsOpen(false)}

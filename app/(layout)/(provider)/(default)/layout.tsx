@@ -10,7 +10,7 @@ export default function DefaultLayout({
 }) {
   return (
     <div className="h-screen w-screen p-4 max-w-[800px]">
-      <Header title="Reminders" />
+      <Header title="Reminders" description="Here is a list of your tasks!" />
       {children}
     </div>
   );

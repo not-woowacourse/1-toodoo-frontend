@@ -10,13 +10,19 @@ import useQueryGetTodoList from '@/react-query/queries/useQueryGetTodoList';
 export default function TodoList() {
   const { data: todoList } = useQueryGetTodoList();
   const [filtered, setFiltered] = useState(true);
-  const filteredTodoList = filtered
-    ? todoList?.filter((todo) => !todo.isDone)
-    : todoList;
+  const filteredTodoList = todoList?.filter((todo) => !todo.isDone);
+
   return (
     <div className="flex flex-col gap-y-2">
       <Separator className="my-1" />
-      <div className="flex justify-end">
+      <div className="flex justify-between items-center">
+        <div>
+          총{' '}
+          <span className="text-red-500">
+            {(filtered ? filteredTodoList : todoList)?.length}
+          </span>
+          개의 할 일이 있습니다 ✨
+        </div>
         <Tabs
           defaultValue="filtered"
           onClick={() => {
@@ -31,7 +37,7 @@ export default function TodoList() {
         </Tabs>
       </div>
       <ul className="flex flex-col gap-y-1 w-full">
-        {filteredTodoList?.map((todo) => (
+        {(filtered ? filteredTodoList : todoList)?.map((todo) => (
           <TodoItem
             key={todo.id}
             id={String(todo.id)}

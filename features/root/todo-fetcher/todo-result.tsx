@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import ShowAlreadyDoneToggle from '@/features/root/todo-fetcher/show-already-done-toggle';
 import TodoList from '@/features/root/todo-fetcher/todo-list';
@@ -10,6 +10,18 @@ type TodoResultProps = {
   result: Todo[];
 };
 
+const filterTodoPredicate = (isShowAlreadyDone: boolean) => (todo: Todo) => {
+  if (isShowAlreadyDone) {
+    return true;
+  }
+
+  return !todo.isDone;
+};
+
+const sortTodoPredicateLatestFirst = (a: Todo, b: Todo) => {
+  return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+};
+
 const TodoResult = ({ result }: TodoResultProps) => {
   const [isShowAlreadyDone, setIsAlreadyDone] = useState<boolean>(false);
 
@@ -17,13 +29,13 @@ const TodoResult = ({ result }: TodoResultProps) => {
     setIsAlreadyDone(pressed);
   };
 
-  if (!isShowAlreadyDone) {
-    result = result.filter((todo) => !todo.isDone);
-  }
+  const filteredResult = useMemo(() => {
+    return result.filter(filterTodoPredicate(isShowAlreadyDone));
+  }, [result, isShowAlreadyDone]);
 
-  result.sort(
-    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime(),
-  );
+  const sortedResult = useMemo(() => {
+    return filteredResult.sort(sortTodoPredicateLatestFirst);
+  }, [filteredResult]);
 
   const { length } = result;
 
@@ -38,7 +50,7 @@ const TodoResult = ({ result }: TodoResultProps) => {
           onPressedChange={handlePressedChange}
         />
       </div>
-      <TodoList todos={result} />
+      <TodoList todos={sortedResult} />
     </div>
   );
 };

@@ -17,8 +17,10 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko-KR">
       <QueryProvider>
-        <body className={inter.className}>{children}</body>
-        <Toaster richColors />
+        <body className={inter.className}>
+          {children}
+          <Toaster richColors />
+        </body>
       </QueryProvider>
     </html>
   );

@@ -19,7 +19,7 @@ const TodoListBody = () => {
   }
 
   return (
-    <ul className="flex flex-col gap-2 w-full h-full overflow-y-scroll p-1 scrollbar-hide">
+    <ul className="flex flex-col gap-2 w-full h-full overflow-y-scroll px-1 scrollbar-hide">
       {todos?.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
     </ul>
   );

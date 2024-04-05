@@ -7,7 +7,7 @@ const TodoList = () => {
   return (
     <div
       className={cn(
-        'flex flex-col items-center gap-5',
+        'flex flex-col items-center gap-3',
         'mt-12',
         'w-full h-full',
         'rounded-xl',

@@ -25,10 +25,10 @@ export default function CreateTodo() {
   };
 
   return (
-    <div className="absolute bottom-8 right-8 flex items-center justify-center">
+    <div className="absolute bottom-4 right-4 flex items-center justify-center">
       <Dialog>
         <DialogTrigger asChild>
-          <PlusCircle className="w-20 h-20 cursor-pointer text-yellow-300 hover:text-yellow-400 transition-colors duration-300" />
+          <PlusCircle className="w-20 h-20 cursor-pointer text-gray-300 hover:text-yellow-400 transition-colors duration-300" />
         </DialogTrigger>
         <TodoForm
           type="create"

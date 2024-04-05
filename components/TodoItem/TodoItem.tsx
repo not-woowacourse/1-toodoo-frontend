@@ -103,7 +103,7 @@ export default function TodoItem({
         </Dialog>
 
         <AlertDialog>
-          <AlertDialogTrigger>
+          <AlertDialogTrigger asChild>
             <Button variant={'outline'}>❎</Button>
           </AlertDialogTrigger>
           <AlertDialogContent>

@@ -11,7 +11,7 @@ const TodoListItemUpdateButton = ({
   onClick,
 }: TodoListItemUpdateButtonProps) => {
   return (
-    <Button variant="slient" size="none" onClick={onClick}>
+    <Button variant="silent" size="none" onClick={onClick}>
       <PencilLine className="h-5 w-5 text-neutral-500" />
     </Button>
   );

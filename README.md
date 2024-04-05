@@ -2,47 +2,17 @@
 
 > 이 과제는 iOS의 [미리 알림(Reminders)](https://apps.apple.com/us/app/reminders/id1108187841)를 모티브로 제작되었습니다.
 
-## 유의사항
+> 해당 구현과제의 문제는 [여기](https://github.com/not-woowacourse/1-toodoo-frontend)에서 볼 수 있어요.
 
-**읽기 좋은 코드**에 집중해주세요.
+## 기술 스택
 
-- 기능의 정상 동작 여부
-- 작성하는 코드의 퀄리티
-- Git 관리 수준
-- PR, 코드 리뷰 방식
+- Next.js v14
+- TailwindCSS
+- @shadcn/ui
+- Axios
+- @tanstack/query
 
-최소 기능 구현만 만족하면 **자유롭게 커스텀**이 가능합니다.
-
-- 디자인 커스텀 가능 (@shadcn/ui 안 써도 됨)
-- 폴더 구조 커스텀 가능
-- 코드 컨벤션 커스텀 가능
-- 의존성 설치 및 삭제 가능
-
-**README 작성**은 필수입니다.
-
-- 자신의 코드에서 강조할 부분
-- 자신의 코드에서 부족한 부분
-- 기타 코드를 이해하는데 도움을 주는 내용
-
-Fork & PR 등 과제 진행과 관련된 내용은,  
- [우테코 따라잡기 노션 - 구현과제 진행 관련 유의사항](https://yopark.notion.site/08c99780759944118452d77b6927775a) 문서를 참고해주세요.
-
-배포 이후 **배포 주소**를 말씀해주시면 해당 주소를 CORS에 추가하도록 하겠습니다.
-
-## API
-
-API 주소 : https://not-woowacourse-api.yopark.dev
-
-자세한 내용은 [Swagger](https://not-woowacourse-api.yopark.dev/api-docs)를 참고해주세요.
-
-이번 과제에서 사용할 API는 **0.x(공통), 1.x(Toodoo)** 입니다.
-
-> 이걸 만든 사람은 백엔드 개발자가 아닙니다. 사용해보시고 오류나 빈틈이 있으면 채널톡 부탁드립니다 😭
-
-## 구현해야 할 기능
-
-> Toodoo 시연 링크 : https://not-woowacourse-1-toodoo-frontend-for-example.vercel.app  
-> Toodoo 시연 레포 : https://github.com/yoopark/not-woowacourse-1-toodoo-frontend-for-example
+## 구현한 기능
 
 할 일 조회하기
 
@@ -63,7 +33,45 @@ API 주소 : https://not-woowacourse-api.yopark.dev
 
 - 할 일을 삭제합니다. (완료하는 것과 삭제하는 것은 다릅니다.)
 
-## 기술 스택 관련 제한사항
+## 내 코드에서 강조할 부분
 
-- React Query, Axios를 사용해주세요.
-- 할 일 생성, 할 일 수정 시 React Hook Form을 사용하지 말아주세요. (다음 주차에 진행할 내용임)
+컴포넌트 쪼개기를 **엄청나게** 해봤습니다. (아니, 뭐 이정도로 해야돼? 할 정도임)
+
+Props 타입을 제작할 때 유틸리티 타입 (Pick, PickAndRename 등)을 **과하게** 사용하여 거의 타입 계의 SSOT(Single Source Of Truth)를 경험하실 수 있도록 짜봤습니다.
+
+React Hook Form은 없지만 useForm 커스텀 훅을 **야매로** 만들어보았습니다.
+
+아, todo filter, 최신 순 sort 할 때 **useMemo** 써봤습니다. 하하하 (사실 useMemo 처음 써봄. 큰 프로젝트할 때는 넣었다가 욕먹기 일쑤라 ... )
+
+app 내에 `_components` 폴더를 만들지 않고, `features` 폴더를 따로 만드는 React 식 폴더 구조를 채택(이 아니라 내가 제멋대로 도입)해봤습니다.
+
+- 대부분의 개발이 컴포넌트에서 진행되는데, 페이지 폴더 타고 들어가니까 처음 프로젝트를 보는 사람은 약간 어디가 중요한지 모르는 감이 있어서요 ...
+- `features`에서는 depth를 타고 폴더를 만드는게 아니라, 1-depth로 플랫하게 펼칩니다.
+- 정리하자면, `components` 폴더에서는 공통으로 사용하는 컴포넌트가 들어가고, `features` 폴더에는 해당 페이지에서만 사용되는 것이 자명한 컴포넌트들이 들어갑니다.
+- 결코 Atomic Design Pattern과 연관 없습니다. (atoms, molecules, templates 따위는 없음)
+
+상수화에 좀 신경썼습니다. (뭐 상수화는 하면 할 수록 좋으니까요?)
+
+## 내 코드에서 부족한 부분
+
+모바일 사용 시 UX가 안 좋습니다.
+
+- 화면은 모바일로 만들어놓고 모바일 신경 안 쓰는게 웃기긴 한데, 이번 짤 때는 제 주 관심사가 그게 아니었어서 ...
+- 모바일에서 Sheet 열면 키보드랑 Sheet이 겹치는 **대참사**를 확인하실 수 있습니다.
+
+아.. 어제(목요일)에서야 React Query에서 SSR Fetching이 가능하다는 걸 발견했습니다. 추후 리팩토링할 예정입니다.
+
+- **[개발자 도구] - [환경 설정] - [디버거] - [자바스크립트 사용 중지]** 를 통해 자바스크립트를 꺼보시면 첫 렌더링 시에 할 일을 받아오지 못한다는 것으로 여전히 CSR Fetching이라는 것을 확인하실 수 있어요.
+
+use-immer를 써서 UpdateTodo 쪽을 변경해보고 싶네요. (매우 쉬운데 한번도 안 써봐서 ... ) 아직 못했습니다.
+
+- Ref. https://react.dev/learn/updating-objects-in-state
+
+Lighthouse는 전혀 안 봤습니다.
+
+- Performance 안 좋을 수도 있음.
+- 웹 접근성 당연히 고려 안 함. (shadcn/ui가 알아서 해줬을 거라 믿어버림)
+
+로직 레이어 분리 및 테스트 코드에 대해서는 제가 앎이 부족하여 짜지 못하였습니다.
+
+- 이건 지금처럼 쉬울 때 한번 해보면 좋을 것 같아서 리팩토링 시 추가해볼 것 같습니다.

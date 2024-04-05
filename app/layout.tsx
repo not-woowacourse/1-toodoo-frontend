@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { PropsWithChildren } from 'react';
+
+import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
+import QueryProvider from '@/providers/query-provider';
+import TodoContextProvider from '@/store/todo-context';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -13,7 +17,12 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="ko-KR">
-      <body className={inter.className}>{children}</body>
+      <QueryProvider>
+        <body className={inter.className}>
+          <TodoContextProvider>{children}</TodoContextProvider>
+          <Toaster richColors />
+        </body>
+      </QueryProvider>
     </html>
   );
 };

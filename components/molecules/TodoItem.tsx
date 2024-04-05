@@ -8,18 +8,13 @@ import UpdateTodoSheet from '@/components/molecules/UpdateTodoSheet';
 
 type TodoItemProps = {
   todo: Todo;
-  hideCompleted: boolean;
 };
 
-export const TodoItem = ({ todo, hideCompleted }: TodoItemProps) => {
+export const TodoItem = ({ todo }: TodoItemProps) => {
   const { id, title, description, isDone } = todo;
-  const isHidden = hideCompleted && isDone;
 
   return (
-    <li
-      className="w-full h-14 p-3 flex items-center gap-3 bg-white rounded-md"
-      hidden={isHidden}
-    >
+    <li className="w-full h-14 p-3 flex items-center gap-3 bg-white rounded-md">
       <CompleteTodoCheckbox todoId={id} isDone={isDone} />
       <TodoInfo title={title} description={description} />
       <UpdateTodoSheet todo={todo} />

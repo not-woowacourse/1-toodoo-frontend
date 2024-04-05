@@ -1,5 +1,5 @@
 import { PencilLine } from 'lucide-react';
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
 import { Button } from '@/components/ui/button';
 

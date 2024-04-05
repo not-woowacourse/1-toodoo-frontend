@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 import { toast } from 'sonner';
 
 import { QUERY_KEYS } from '@/constants/query-keys';

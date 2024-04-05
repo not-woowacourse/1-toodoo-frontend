@@ -1,10 +1,11 @@
-import { CheckedState } from '@radix-ui/react-checkbox';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { QUERY_KEYS } from '@/constants/query-keys';
 import TodoListItemDoneCheckbox from '@/features/root/todo-list-item/todo-list-item-done-checkbox';
 import { axiosPatchTodoOf } from '@/lib/apis';
+
+import type { CheckedState } from '@radix-ui/react-checkbox';
 
 type TodoListItemDoneActionProps = {
   todoId: number;

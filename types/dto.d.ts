@@ -1,3 +1,5 @@
+import type { Todo } from '@/types/todo';
+
 type AxiosPostTodoDto = Pick<Todo, 'title'>;
 
 type AxiosPatchTodoDto = Partial<

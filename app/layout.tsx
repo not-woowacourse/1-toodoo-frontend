@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 import { Toaster } from '@/components/ui/sonner';
 import QueryProvider from '@/providers/query-provider';

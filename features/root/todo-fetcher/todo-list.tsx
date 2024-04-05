@@ -1,5 +1,5 @@
 import TodoListItem from '@/features/root/todo-list-item';
-import { Todo } from '@/types/todo';
+import type { Todo } from '@/types/todo';
 
 type TodoListProps = {
   todos: Todo[];

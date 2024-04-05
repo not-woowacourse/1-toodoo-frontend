@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ChangeEventHandler, ReactNode, useState } from 'react';
+import { useState, type ChangeEventHandler, type ReactNode } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/sheet';
 import { QUERY_KEYS } from '@/constants/query-keys';
 import { axiosPatchTodoOf } from '@/lib/apis';
-import { Todo } from '@/types/todo';
+import type { Todo } from '@/types/todo';
 
 type TodoListItemUpdateSheetProps = {
   trigger: ReactNode;

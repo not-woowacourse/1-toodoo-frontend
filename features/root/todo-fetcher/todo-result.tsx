@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import ShowAlreadyDoneToggle from '@/features/root/todo-fetcher/show-already-done-toggle';
 import TodoList from '@/features/root/todo-fetcher/todo-list';
-import { Todo } from '@/types/todo';
+import type { Todo } from '@/types/todo';
 
 type TodoResultProps = {
   result: Todo[];

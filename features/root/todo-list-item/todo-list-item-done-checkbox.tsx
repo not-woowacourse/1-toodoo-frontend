@@ -1,6 +1,7 @@
-import { CheckedState } from '@radix-ui/react-checkbox';
-
 import { Checkbox } from '@/components/ui/checkbox';
+
+import type { CheckedState } from '@radix-ui/react-checkbox';
+
 
 type TodoListItemDoneCheckboxProps = {
   defaultChecked: boolean;

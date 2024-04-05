@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 import QueryProvider from '@/providers/query-provider';
+import TodoContextProvider from '@/store/todo-context';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
     <html lang="ko-KR">
       <QueryProvider>
         <body className={inter.className}>
-          {children}
+          <TodoContextProvider>{children}</TodoContextProvider>
           <Toaster richColors />
         </body>
       </QueryProvider>

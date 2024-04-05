@@ -59,9 +59,12 @@ export default function RootPage() {
           <div className="sr-only" role="status">
             로딩 중입니다.
           </div>
-          {Array.from({ length: 4 }).map((_, index) => (
-            <Skeleton key={index} />
-          ))}
+          <div className="flex flex-col gap-3">
+            <div className="ml-auto mr-2 h-4 w-16 animate-pulse rounded bg-neutral-200" />
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton key={index} />
+            ))}
+          </div>
         </div>
       )}
       {error && <Error intent="로딩" error={error} className="w-full" />}
@@ -72,11 +75,16 @@ export default function RootPage() {
         </div>
       ) : null}
       {data && data.length > 0 && (
-        <ul className="flex w-full flex-col gap-3">
-          {data.map((item) => (
-            <TodoCard todo={item} key={item.id} />
-          ))}
-        </ul>
+        <div className="flex flex-col gap-2">
+          <div className="px-2 text-right text-sm font-semibold text-neutral-600">
+            {data.length}개의 항목
+          </div>
+          <ul className="flex w-full flex-col gap-3">
+            {data.map((item) => (
+              <TodoCard todo={item} key={item.id} />
+            ))}
+          </ul>
+        </div>
       )}
     </main>
   );

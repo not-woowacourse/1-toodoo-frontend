@@ -2,12 +2,13 @@
 
 import { useQuery } from '@tanstack/react-query';
 
+import { QUERY_KEYS } from '@/constants/query-keys';
 import TodoResult from '@/features/root/todo-result';
 import { axiosGetTodos } from '@/lib/apis';
 
 const TodoFetcher = () => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['todos'],
+    queryKey: QUERY_KEYS.TODOS,
     queryFn: axiosGetTodos,
   });
 

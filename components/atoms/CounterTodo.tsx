@@ -1,18 +1,16 @@
-'use client';
+import { useContext } from 'react';
 
-type CounterTodoProps = {
-  unDoneLength?: number;
-  DoneLength?: number;
-};
+import { TodoContext } from '@/store/todo-context';
+const CounterTodo = () => {
+  const { todos, isShowDone } = useContext(TodoContext);
+  const unDoneTodos = todos.filter((todo) => !todo.isDone);
 
-const CounterTodo = ({
-  unDoneLength = 0,
-  DoneLength = 0,
-}: CounterTodoProps) => {
+  let doneLength = todos.length - unDoneTodos.length;
+
   return (
-    <div className="flex flex-col gap-1 flex-1">
-      <p className="text-sm">총 {unDoneLength}개의 할 일이 있습니다</p>
-      <p className="text-sm">총 {DoneLength}개의 할 일을 완료했습니다</p>
+    <div className="flex flex-col justify-end gap-1 flex-1">
+      <p className="text-sm">총 {unDoneTodos.length}개의 할 일</p>
+      {isShowDone && <p className="text-sm">총 {doneLength}개의 할 일 완료</p>}
     </div>
   );
 };

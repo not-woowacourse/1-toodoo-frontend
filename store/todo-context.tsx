@@ -16,6 +16,13 @@ type TodoContext = {
 export type Action = { type: 'TOGGLE' };
 
 const initState = { isShowDone: false };
+const initContext = {
+  todos: [],
+  isLoading: true,
+  isError: false,
+  isShowDone: false,
+  handleIsShowDone: () => {},
+};
 
 function todoReducer(state: typeof initState, action: Action) {
   switch (action.type) {
@@ -26,13 +33,7 @@ function todoReducer(state: typeof initState, action: Action) {
   }
 }
 
-export const TodoContext = createContext<TodoContext>({
-  todos: [],
-  isLoading: true,
-  isError: false,
-  isShowDone: false,
-  handleIsShowDone: () => {},
-});
+export const TodoContext = createContext<TodoContext>(initContext);
 
 export default function TodoContextProvider({
   children,
@@ -53,7 +54,7 @@ export default function TodoContextProvider({
   }
 
   const ctxValue = {
-    todos: data?.data || [],
+    todos: data?.data || initContext.todos,
     isLoading: isLoading,
     isError: isError,
     isShowDone: state.isShowDone,

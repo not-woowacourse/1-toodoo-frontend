@@ -60,8 +60,6 @@ export default function TodoContextProvider({
     handleIsShowDone: handleIsShowDone,
   };
 
-  console.log('Context : ', ctxValue.todos);
-
   return (
     <TodoContext.Provider value={ctxValue}>{children}</TodoContext.Provider>
   );

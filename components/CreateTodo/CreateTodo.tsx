@@ -1,8 +1,8 @@
+import { Dialog, DialogTrigger } from '@radix-ui/react-dialog';
+import { PlusCircle } from 'lucide-react';
 import { useState } from 'react';
 
 import TodoForm from '@/components/TodoForm/TodoForm';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import useMutationCreateTodo from '@/react-query/mutations/useMutationCreateTodo';
 
 export default function CreateTodo() {
@@ -25,21 +25,21 @@ export default function CreateTodo() {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="ghost" className="px-2 py-6 w-full justify-start">
-          + New Reminder
-        </Button>
-      </DialogTrigger>
-      <TodoForm
-        type="create"
-        title={title}
-        description={description}
-        onClick={handleCreateTodo}
-        onChangeTitle={handleChangeTitle}
-        onChangeDescription={handleChangeDescription}
-        onReset={handleReset}
-      />
-    </Dialog>
+    <div className="absolute bottom-10 right-10 flex items-center justify-center">
+      <Dialog>
+        <DialogTrigger asChild>
+          <PlusCircle className="w-20 h-20 cursor-pointer text-yellow-300 hover:text-yellow-400 transition-colors duration-300" />
+        </DialogTrigger>
+        <TodoForm
+          type="create"
+          title={title}
+          description={description}
+          onClick={handleCreateTodo}
+          onChangeTitle={handleChangeTitle}
+          onChangeDescription={handleChangeDescription}
+          onReset={handleReset}
+        />
+      </Dialog>
+    </div>
   );
 }

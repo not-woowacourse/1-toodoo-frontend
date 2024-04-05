@@ -1,8 +1,19 @@
 'use client';
 
+import { AlertDialog } from '@radix-ui/react-alert-dialog';
 import { useState } from 'react';
 
 import TodoForm from '@/components/TodoForm/TodoForm';
+import {
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
@@ -90,9 +101,32 @@ export default function TodoItem({
             onChangeDescription={handleChangeDescription}
           />
         </Dialog>
-        <Button variant={'outline'} onClick={handleClickDelete}>
-          ❎
-        </Button>
+
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <Button variant={'outline'}>❎</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                <span className="text-blue-500">{title}</span> 할일을
+                삭제할까요?
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                삭제된 데이터는 복구될 수 없습니다.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>취소</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleClickDelete}
+                className="bg-red-600"
+              >
+                삭제
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );

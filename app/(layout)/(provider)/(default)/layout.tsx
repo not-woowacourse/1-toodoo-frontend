@@ -9,7 +9,7 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="h-screen min-w-[800px] w-full">
+    <div className="h-screen w-screen p-4 max-w-[800px]">
       <Header title="Reminders" />
       {children}
     </div>

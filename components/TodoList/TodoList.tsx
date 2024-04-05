@@ -3,7 +3,8 @@
 import { useState } from 'react';
 
 import TodoItem from '@/components/TodoItem/TodoItem';
-import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import useQueryGetTodoList from '@/react-query/queries/useQueryGetTodoList';
 
 export default function TodoList() {
@@ -14,14 +15,20 @@ export default function TodoList() {
     : todoList;
   return (
     <div className="flex flex-col gap-y-2">
+      <Separator className="my-1" />
       <div className="flex justify-end">
-        <Button
+        <Tabs
+          defaultValue="filtered"
           onClick={() => {
             setFiltered((prev) => !prev);
           }}
+          value={filtered ? 'filtered' : 'all'}
         >
-          {filtered ? '전체 보기' : '남은 할일 보기'}
-        </Button>
+          <TabsList>
+            <TabsTrigger value="filtered">filtered</TabsTrigger>
+            <TabsTrigger value="all">all</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
       <ul className="flex flex-col gap-y-1 w-full">
         {filteredTodoList?.map((todo) => (

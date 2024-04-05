@@ -68,7 +68,7 @@ export default function TodoForm({
             Cancel
           </Button>
         </DialogClose>
-        <div>
+        <div className="flex gap-x-1">
           <Button
             variant={'secondary'}
             className="bg-blue-100"

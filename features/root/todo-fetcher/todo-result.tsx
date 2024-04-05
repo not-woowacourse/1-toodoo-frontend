@@ -4,17 +4,14 @@ import { useMemo, useState } from 'react';
 
 import ShowAlreadyDoneToggle from '@/features/root/todo-fetcher/show-already-done-toggle';
 import TodoList from '@/features/root/todo-fetcher/todo-list';
+import TodoResultDescriptor from '@/features/root/todo-fetcher/todo-result-descriptor';
 import type { Todo } from '@/types/todo';
 
 type TodoResultProps = {
   result: Todo[];
 };
 
-const filterTodoPredicate = (isShowAlreadyDone: boolean) => (todo: Todo) => {
-  if (isShowAlreadyDone) {
-    return true;
-  }
-
+const filterTodoPredicateNotDone = (todo: Todo) => {
   return !todo.isDone;
 };
 
@@ -29,28 +26,32 @@ const TodoResult = ({ result }: TodoResultProps) => {
     setIsAlreadyDone(pressed);
   };
 
-  const filteredResult = useMemo(() => {
-    return result.filter(filterTodoPredicate(isShowAlreadyDone));
-  }, [result, isShowAlreadyDone]);
+  const filteredNotDoneResult = useMemo(() => {
+    return result.filter(filterTodoPredicateNotDone);
+  }, [result]);
 
-  const sortedResult = useMemo(() => {
-    return filteredResult.sort(sortTodoPredicateLatestFirst);
-  }, [filteredResult]);
+  const sortedLatestFirstResult = useMemo(() => {
+    if (isShowAlreadyDone) {
+      return result.sort(sortTodoPredicateLatestFirst);
+    }
 
-  const { length } = result;
+    return filteredNotDoneResult.sort(sortTodoPredicateLatestFirst);
+  }, [filteredNotDoneResult, isShowAlreadyDone]);
 
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-neutral-500">
-          총 {length}개의 할 일이 있습니다.
-        </p>
+        <TodoResultDescriptor
+          isShowAlreadyDone={isShowAlreadyDone}
+          totalLength={result.length}
+          notDoneLength={filteredNotDoneResult.length}
+        />
         <ShowAlreadyDoneToggle
           defaultPressed={isShowAlreadyDone}
           onPressedChange={handlePressedChange}
         />
       </div>
-      <TodoList todos={sortedResult} />
+      <TodoList todos={sortedLatestFirstResult} />
     </div>
   );
 };

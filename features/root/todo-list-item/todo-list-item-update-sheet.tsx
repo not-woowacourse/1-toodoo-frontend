@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState, type ChangeEventHandler, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -18,12 +18,18 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { QUERY_KEYS } from '@/constants/query-keys';
+import useForm from '@/hooks/use-form';
 import { axiosPatchTodoOf } from '@/lib/apis';
 import type { Todo } from '@/types/todo';
 
 type TodoListItemUpdateSheetProps = {
   trigger: ReactNode;
   todo: Todo;
+};
+
+type UpdateTodoFormSchema = {
+  title: string;
+  description: string;
 };
 
 const TodoListItemUpdateSheet = ({
@@ -61,26 +67,18 @@ const TodoListItemUpdateSheet = ({
     },
   });
 
-  const [title, setTitle] = useState<string>(todo.title);
-  const [description, setDescription] = useState<string>(
-    todo.description ?? '',
-  );
+  const updateTodoFormInitialValues: UpdateTodoFormSchema = {
+    title: todo.title,
+    description: todo.description ?? '',
+  };
+
+  const { values, handleChange } = useForm<UpdateTodoFormSchema>({
+    initialValues: updateTodoFormInitialValues,
+  });
+
+  const { title, description } = values;
 
   const isTitleEmpty = title === '';
-
-  const handleTitleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { value } = event.currentTarget;
-
-    setTitle(value);
-  };
-
-  const handleDescriptionChange: ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    const { value } = event.currentTarget;
-
-    setDescription(value);
-  };
 
   const handleSubmit = () => {
     mutate({
@@ -107,8 +105,9 @@ const TodoListItemUpdateSheet = ({
             </Label>
             <Input
               id="title"
+              name="title"
               value={title}
-              onChange={handleTitleChange}
+              onChange={handleChange}
               className="col-span-3"
             />
           </div>
@@ -118,8 +117,9 @@ const TodoListItemUpdateSheet = ({
             </Label>
             <Input
               id="description"
+              name="description"
               value={description}
-              onChange={handleDescriptionChange}
+              onChange={handleChange}
               className="col-span-3"
             />
           </div>

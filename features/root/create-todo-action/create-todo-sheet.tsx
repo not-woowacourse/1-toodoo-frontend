@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useState, type ChangeEventHandler, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -18,10 +18,19 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { QUERY_KEYS } from '@/constants/query-keys';
+import useForm from '@/hooks/use-form';
 import { axiosPostTodo } from '@/lib/apis';
 
 type CreateTodoSheetProps = {
   trigger: ReactNode;
+};
+
+type CreateTodoFormSchema = {
+  title: string;
+};
+
+const createTodoFormInitialValues: CreateTodoFormSchema = {
+  title: '',
 };
 
 const CreateTodoSheet = ({ trigger }: CreateTodoSheetProps) => {
@@ -39,15 +48,13 @@ const CreateTodoSheet = ({ trigger }: CreateTodoSheetProps) => {
     },
   });
 
-  const [title, setTitle] = useState<string>('');
+  const { values, handleChange } = useForm<CreateTodoFormSchema>({
+    initialValues: createTodoFormInitialValues,
+  });
+
+  const { title } = values;
 
   const isTitleEmpty = title === '';
-
-  const handleTitleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { value } = event.currentTarget;
-
-    setTitle(value);
-  };
 
   const handleSubmit = () => {
     mutate({ title });
@@ -68,8 +75,9 @@ const CreateTodoSheet = ({ trigger }: CreateTodoSheetProps) => {
             </Label>
             <Input
               id="title"
+              name="title"
               value={title}
-              onChange={handleTitleChange}
+              onChange={handleChange}
               className="col-span-3"
             />
           </div>

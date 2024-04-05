@@ -25,14 +25,6 @@ type CreateTodoSheetProps = {
   trigger: ReactNode;
 };
 
-type CreateTodoFormSchema = {
-  title: string;
-};
-
-const createTodoFormInitialValues: CreateTodoFormSchema = {
-  title: '',
-};
-
 const CreateTodoSheet = ({ trigger }: CreateTodoSheetProps) => {
   const queryClient = useQueryClient();
 
@@ -92,6 +84,14 @@ const CreateTodoSheet = ({ trigger }: CreateTodoSheetProps) => {
       </SheetContent>
     </Sheet>
   );
+};
+
+type CreateTodoFormSchema = {
+  title: string;
+};
+
+const createTodoFormInitialValues: CreateTodoFormSchema = {
+  title: '',
 };
 
 export default CreateTodoSheet;

@@ -1,24 +1,20 @@
+
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import type { ComponentPropsWithoutRef } from 'react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 
-import type { CheckedState } from '@radix-ui/react-checkbox';
+/**
+ * This component uses props of `Checkbox` component.
+ * See @/components/ui/checkbox.tsx
+ */
+type TodoListItemDoneCheckboxProps = Pick<
+  ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  'defaultChecked' | 'onCheckedChange'
+>;
 
-
-type TodoListItemDoneCheckboxProps = {
-  defaultChecked: boolean;
-  onCheckedChange: (checked: CheckedState) => void;
-};
-
-const TodoListItemDoneCheckbox = ({
-  defaultChecked,
-  onCheckedChange,
-}: TodoListItemDoneCheckboxProps) => {
-  return (
-    <Checkbox
-      className="mt-1"
-      defaultChecked={defaultChecked}
-      onCheckedChange={onCheckedChange}
-    />
-  );
+const TodoListItemDoneCheckbox = (props: TodoListItemDoneCheckboxProps) => {
+  return <Checkbox className="mt-1" {...props} />;
 };
 
 export default TodoListItemDoneCheckbox;

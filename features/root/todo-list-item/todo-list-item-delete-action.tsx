@@ -5,12 +5,17 @@ import type { MouseEventHandler } from 'react';
 import { toast } from 'sonner';
 
 import { QUERY_KEYS } from '@/constants/query-keys';
+import { TodoListItemProps } from '@/features/root/todo-list-item';
 import TodoListItemDeleteButton from '@/features/root/todo-list-item/todo-list-item-delete-button';
 import { axiosDeleteTodoOf } from '@/lib/apis';
+import type { PickAndRename } from '@/types/utility-types';
 
-type TodoListItemDeleteActionProps = {
-  todoId: number;
-};
+type TodoListItemDeleteActionProps = PickAndRename<
+  TodoListItemProps['todo'],
+  {
+    id: 'todoId';
+  }
+>;
 
 const TodoListItemDeleteAction = ({
   todoId,

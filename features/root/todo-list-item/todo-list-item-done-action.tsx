@@ -4,28 +4,24 @@ import { toast } from 'sonner';
 import { QUERY_KEYS } from '@/constants/query-keys';
 import TodoListItemDoneCheckbox from '@/features/root/todo-list-item/todo-list-item-done-checkbox';
 import { axiosPatchTodoOf } from '@/lib/apis';
+import type { TodoListItemProps } from '@/features/root/todo-list-item';
+import type { PickAndRename } from '@/types/utility-types';
 
 import type { CheckedState } from '@radix-ui/react-checkbox';
 
-type TodoListItemDoneActionProps = {
-  todoId: number;
-  isDone: boolean;
-};
+type TodoListItemDoneActionProps = PickAndRename<
+  TodoListItemProps['todo'],
+  {
+    id: 'todoId';
+    isDone: 'isDone';
+  }
+>;
 
 const TodoListItemDoneAction = ({
   todoId,
   isDone,
 }: TodoListItemDoneActionProps) => {
   const queryClient = useQueryClient();
-
-  const axiosPatchTodoIsDoneOf = async (data: {
-    todoId: number;
-    isDone: boolean;
-  }) => {
-    const { todoId, isDone } = data;
-
-    await axiosPatchTodoOf(todoId, { isDone });
-  };
 
   const { mutate } = useMutation({
     mutationFn: axiosPatchTodoIsDoneOf,
@@ -57,6 +53,14 @@ const TodoListItemDoneAction = ({
       onCheckedChange={handleCheckedChange}
     />
   );
+};
+
+type AxiosPatchTodoIsDoneOfParams = TodoListItemDoneActionProps;
+
+const axiosPatchTodoIsDoneOf = async (params: AxiosPatchTodoIsDoneOfParams) => {
+  const { todoId, isDone } = params;
+
+  await axiosPatchTodoOf(todoId, { isDone });
 };
 
 export default TodoListItemDoneAction;

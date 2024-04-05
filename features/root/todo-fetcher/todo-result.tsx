@@ -11,14 +11,6 @@ type TodoResultProps = {
   result: Todo[];
 };
 
-const filterTodoPredicateNotDone = (todo: Todo) => {
-  return !todo.isDone;
-};
-
-const sortTodoPredicateLatestFirst = (a: Todo, b: Todo) => {
-  return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
-};
-
 const TodoResult = ({ result }: TodoResultProps) => {
   const [isShowAlreadyDone, setIsAlreadyDone] = useState<boolean>(false);
 
@@ -54,6 +46,14 @@ const TodoResult = ({ result }: TodoResultProps) => {
       <TodoList todos={sortedLatestFirstResult} />
     </div>
   );
+};
+
+const filterTodoPredicateNotDone = (todo: Todo) => {
+  return !todo.isDone;
+};
+
+const sortTodoPredicateLatestFirst = (a: Todo, b: Todo) => {
+  return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
 };
 
 export default TodoResult;

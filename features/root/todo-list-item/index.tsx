@@ -35,4 +35,5 @@ const TodoListItem = ({ todo }: TodoListItemProps) => {
   );
 };
 
+export type { TodoListItemProps };
 export default TodoListItem;

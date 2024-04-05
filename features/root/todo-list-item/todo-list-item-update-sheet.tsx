@@ -27,11 +27,6 @@ type TodoListItemUpdateSheetProps = {
   todo: Todo;
 };
 
-type UpdateTodoFormSchema = {
-  title: string;
-  description: string;
-};
-
 const TodoListItemUpdateSheet = ({
   trigger,
   todo,
@@ -83,8 +78,7 @@ const TodoListItemUpdateSheet = ({
   const handleSubmit = () => {
     mutate({
       todoId: todo.id,
-      title,
-      description,
+      ...values,
     });
   };
 
@@ -134,6 +128,11 @@ const TodoListItemUpdateSheet = ({
       </SheetContent>
     </Sheet>
   );
+};
+
+type UpdateTodoFormSchema = {
+  title: string;
+  description: string;
 };
 
 export default TodoListItemUpdateSheet;

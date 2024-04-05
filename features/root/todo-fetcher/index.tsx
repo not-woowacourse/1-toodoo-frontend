@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/constants/query-keys';
-import TodoResult from '@/features/root/todo-result';
+import TodoResult from '@/features/root/todo-fetcher/todo-result';
 import { axiosGetTodos } from '@/lib/apis';
 
 const TodoFetcher = () => {

@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { QUERY_KEYS } from '@/constants/query-keys';
-import TodoListItemDoneCheckbox from '@/features/root/todo-list-item-done-checkbox';
+import TodoListItemDoneCheckbox from '@/features/root/todo-list-item/todo-list-item-done-checkbox';
 import { axiosPatchTodoOf } from '@/lib/apis';
 
 type TodoListItemDoneActionProps = {

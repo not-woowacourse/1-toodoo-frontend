@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import ShowAlreadyDoneToggle from '@/features/root/show-already-done-toggle';
-import TodoList from '@/features/root/todo-list';
+import ShowAlreadyDoneToggle from '@/features/root/todo-fetcher/show-already-done-toggle';
+import TodoList from '@/features/root/todo-fetcher/todo-list';
 import { Todo } from '@/types/todo';
 
 type TodoResultProps = {

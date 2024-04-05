@@ -5,7 +5,7 @@ import { MouseEventHandler } from 'react';
 import { toast } from 'sonner';
 
 import { QUERY_KEYS } from '@/constants/query-keys';
-import TodoListItemDeleteButton from '@/features/root/todo-list-item-delete-button';
+import TodoListItemDeleteButton from '@/features/root/todo-list-item/todo-list-item-delete-button';
 import { axiosDeleteTodoOf } from '@/lib/apis';
 
 type TodoListItemDeleteActionProps = {

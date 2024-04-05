@@ -1,8 +1,8 @@
-import TodoListItemDeleteAction from '@/features/root/todo-list-item-delete-action';
-import TodoListItemDescription from '@/features/root/todo-list-item-description';
-import TodoListItemDoneAction from '@/features/root/todo-list-item-done-action';
-import TodoListItemTitle from '@/features/root/todo-list-item-title';
-import TodoListItemUpdateAction from '@/features/root/todo-list-item-update-action';
+import TodoListItemDeleteAction from '@/features/root/todo-list-item/todo-list-item-delete-action';
+import TodoListItemDescription from '@/features/root/todo-list-item/todo-list-item-description';
+import TodoListItemDoneAction from '@/features/root/todo-list-item/todo-list-item-done-action';
+import TodoListItemTitle from '@/features/root/todo-list-item/todo-list-item-title';
+import TodoListItemUpdateAction from '@/features/root/todo-list-item/todo-list-item-update-action';
 import { cn } from '@/lib/utils';
 import { Todo } from '@/types/todo';
 

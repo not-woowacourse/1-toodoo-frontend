@@ -3,8 +3,7 @@ import { useContext } from 'react';
 import AddTodoSheet from '@/components/molecules/AddTodoSheet';
 import CounterTodo from '@/components/atoms/CounterTodo';
 import ShowCompletedToggle from '@/components/atoms/ShowCompletedTodoToggle';
-import { TodoContext } from '@/store/todo-context';
-import { Action } from '@/store/todo-context';
+import { TodoContext, Action } from '@/store/todo-context';
 
 const TodoListHeader = () => {
   const { isShowDone, handleIsShowDone } = useContext(TodoContext);

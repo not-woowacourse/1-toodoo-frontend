@@ -17,7 +17,7 @@ class TodoAPI {
     description,
   }: {
     title: string;
-    description: string;
+    description?: string;
   }) {
     const { data } = await this.core.post(`/todos`, {
       title: title,
@@ -27,15 +27,17 @@ class TodoAPI {
   }
 
   async editTodo({
+    id,
     title,
     description,
     isDone,
   }: {
-    title: string;
-    description: string;
-    isDone: boolean;
+    id: string;
+    title?: string;
+    description?: string;
+    isDone?: boolean;
   }) {
-    const { data } = await this.core.patch<TodoDto>(`/todos`, {
+    const { data } = await this.core.patch<TodoDto>(`/todos/${id}`, {
       title: title,
       description: description,
       isDone: isDone,

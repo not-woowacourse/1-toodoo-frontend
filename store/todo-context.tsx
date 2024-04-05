@@ -1,5 +1,5 @@
 'use client';
-import { createContext, ReactNode, ReducerAction, useReducer } from 'react';
+import { createContext, ReactNode, useReducer } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { apiGetTodos } from '@/lib/apis';
@@ -13,9 +13,9 @@ type TodoContext = {
   handleIsShowDone: (action: Action) => void;
 };
 
-const initState = { isShowDone: false };
+export type Action = { type: 'TOGGLE' };
 
-type Action = { type: 'TOGGLE' };
+const initState = { isShowDone: false };
 
 function todoReducer(state: typeof initState, action: Action) {
   switch (action.type) {

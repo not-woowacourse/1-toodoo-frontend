@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
-    const BACKEND_ORIGIN = 'https://not-woowacourse-api.yopark.dev';
+    const BACKEND_ORIGIN = process.env.NEXT_PUBLIC_SERVER_URL;
 
     return [
       {

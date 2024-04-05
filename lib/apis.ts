@@ -1,4 +1,4 @@
-import { BACKEND_ROUTES } from '@/constants/routes';
+import { API_ROUTES } from '@/constants/routes';
 import { axiosInstance } from '@/lib/axios';
 import type { AxiosPatchTodoDto, AxiosPostTodoDto } from '@/types/dto';
 import type {
@@ -11,31 +11,29 @@ import type {
 
 const axiosPostTodo = (axiosPostTodoDto: AxiosPostTodoDto) => {
   return axiosInstance.post<AxiosPostTodoResponseDto>(
-    BACKEND_ROUTES.TODOS,
+    API_ROUTES.TODOS,
     axiosPostTodoDto,
   );
 };
 
 const axiosGetTodos = () => {
-  return axiosInstance.get<AxiosGetTodosResponseDto>(BACKEND_ROUTES.TODOS);
+  return axiosInstance.get<AxiosGetTodosResponseDto>(API_ROUTES.TODOS);
 };
 
 const axiosGetTodoOf = (id: number) => {
-  return axiosInstance.get<AxiosGetTodoOfResponseDto>(
-    BACKEND_ROUTES.TODO_OF(id),
-  );
+  return axiosInstance.get<AxiosGetTodoOfResponseDto>(API_ROUTES.TODO_OF(id));
 };
 
 const axiosPatchTodoOf = (id: number, axiosPatchTodoDto: AxiosPatchTodoDto) => {
   return axiosInstance.patch<AxiosPatchTodoOfResponseDto>(
-    BACKEND_ROUTES.TODO_OF(id),
+    API_ROUTES.TODO_OF(id),
     axiosPatchTodoDto,
   );
 };
 
 const axiosDeleteTodoOf = (id: number) => {
   return axiosInstance.delete<AxiosDeleteTodoOfResponseDto>(
-    BACKEND_ROUTES.TODO_OF(id),
+    API_ROUTES.TODO_OF(id),
   );
 };
 

@@ -1,6 +1,6 @@
-const BACKEND_ROUTES = {
+const API_ROUTES = {
   TODOS: '/todos',
   TODO_OF: (id: number) => `/todos/${id}`,
 } as const;
 
-export { BACKEND_ROUTES };
+export { API_ROUTES };

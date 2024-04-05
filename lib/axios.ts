@@ -1,10 +1,10 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
 
 import { HTTP_HEADERS } from '@/constants/http-headers';
-import { BACKEND_PROXY_ORIGIN } from '@/constants/url';
+import { API_URL } from '@/constants/url';
 
 const axiosInstance = axios.create({
-  baseURL: BACKEND_PROXY_ORIGIN,
+  baseURL: API_URL,
 });
 
 const axiosRequestInterceptorConfig = (config: InternalAxiosRequestConfig) => {

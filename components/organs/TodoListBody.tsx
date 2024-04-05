@@ -1,14 +1,10 @@
-'use client';
-import { useQuery } from '@tanstack/react-query';
+import { useContext } from 'react';
 
-import { apiGetTodos } from '@/lib/apis';
 import { TodoItem } from '@/components/molecules/TodoItem';
+import { TodoContext } from '@/store/todo-context';
 
 const TodoListBody = () => {
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['todos'],
-    queryFn: apiGetTodos,
-  });
+  const { todos, isLoading, isError } = useContext(TodoContext);
 
   if (isLoading) {
     return <div className="font-semibold text-xl">Loading...</div>;
@@ -17,8 +13,6 @@ const TodoListBody = () => {
   if (isError) {
     return <div className="font-semibold text-xl">Error</div>;
   }
-
-  const todos = data?.data;
 
   if (todos?.length === 0) {
     return <div className="font-semibold text-xl">No data</div>;

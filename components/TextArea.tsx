@@ -1,11 +1,11 @@
 'use client';
 
 import {
-  useEffect,
-  useRef,
+  type ChangeEvent,
   type Dispatch,
   type SetStateAction,
-  type ChangeEvent,
+  useEffect,
+  useRef,
 } from 'react';
 
 interface TextAreaProps {

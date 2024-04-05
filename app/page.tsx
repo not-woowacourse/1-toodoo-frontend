@@ -1,16 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Bird, Github, PlusCircle } from 'lucide-react';
+import { useState } from 'react';
 
-import { TodoCard } from '@/components/TodoCard';
-import type { TodoGetResponse } from '@/lib/types';
-import { Button } from '@/components/Button';
 import { AddTodoSheet } from '@/components/AddTodoSheet';
-import { Toggle } from '@/components/Toggle';
+import { Button } from '@/components/Button';
+import { TodoCard } from '@/components/TodoCard';
 import { Error } from '@/components/TodoCard/Error';
 import { Skeleton } from '@/components/TodoCard/Skeleton';
+import { Toggle } from '@/components/Toggle';
+import type { TodoGetResponse } from '@/lib/types';
 
 export default function RootPage() {
   const [showDone, setShowDone] = useState(false);

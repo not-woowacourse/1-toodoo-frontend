@@ -1,7 +1,7 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
 
-import './globals.css';
 import { QueryProvider } from '@/components/QueryProvider';
 
 const metadata: Metadata = {

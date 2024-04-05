@@ -1,15 +1,15 @@
 'use client';
 
-import { type Dispatch, type SetStateAction } from 'react';
-import { Trash2 } from 'lucide-react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { Trash2 } from 'lucide-react';
+import { type Dispatch, type SetStateAction } from 'react';
 
 import { BottomSheet } from '@/components/BottomSheet';
 import { Button } from '@/components/Button';
-import type { Todo } from '@/lib/types';
 import { Error } from '@/components/TodoCard/Error';
 import { API_URL, DEFAULT_HEADERS } from '@/lib/constants';
+import type { Todo } from '@/lib/types';
 
 interface DeleteTodoSheetProps {
   todo: Todo;

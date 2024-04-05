@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, type MouseEventHandler, useEffect } from 'react';
 import { Loader2, type LucideIcon } from 'lucide-react';
+import { type MouseEventHandler, useEffect, useRef } from 'react';
 
 import { cn } from '@/lib/utils';
 

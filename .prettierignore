@@ -1,2 +1,5 @@
 pnpm-lock.yaml
 .prettierrc
+
+# shadcn/ui
+components/ui

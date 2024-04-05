@@ -1,5 +1,5 @@
-import type { ChangeEventHandler } from 'react';
 import { Check, Loader2 } from 'lucide-react';
+import type { ChangeEventHandler } from 'react';
 
 import type { Todo } from '@/lib/types';
 

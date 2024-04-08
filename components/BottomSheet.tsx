@@ -26,15 +26,14 @@ export function BottomSheet({
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    if (dialogRef.current === null) return;
-
-    if (isOpen) {
+    if (isOpen && dialogRef.current) {
       dialogRef.current.showModal();
       document.body.style.overflowY = 'hidden';
-    } else {
-      dialogRef.current.close();
-      document.body.style.overflowY = 'auto';
     }
+
+    return () => {
+      document.body.style.overflowY = 'auto';
+    };
   }, [isOpen]);
 
   if (isOpen === false) return null;
